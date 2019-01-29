@@ -4,6 +4,7 @@ import ACTION from "../actions/actionType";
 import {getAllUsers, getUserById} from "../api/rest/restController";
 
 export function* fetchAllUsers() {
+    console.log("sdfsdfsdf");
     yield put({ type: ACTION.USERS_REQUEST });
     try {
         const {data} = yield getAllUsers();
@@ -16,7 +17,7 @@ export function* fetchAllUsers() {
 export function* fetchUserById({id}) {
     yield put({ type: ACTION.USERS_REQUEST });
     try {
-        const {data} = yield getAllUsers(id);
+        const {data} = yield getUserById(id);
         yield put({ type: ACTION.ONE_USER_RESPONSE, users: data });
     } catch (e) {
         yield put({ type: ACTION.USERS_ERROR, error: e });

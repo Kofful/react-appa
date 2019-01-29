@@ -1,32 +1,39 @@
-import {testAction} from "../../actions/actionCreators";
+import {getAllUsersAction} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import React, {Component} from 'react';
 
 class UsersList extends Component {
 
-    constructor(props) {
-        super(props);
+    componentDidMount() {
+        this.props.getAllUsers();
     }
 
-    componentDidMount() {
-        this.props.testAction();
+    renderData() {
+        if(this.props.isFetching) {
+            return <span>Loading...</span>
+        }
+        return (
+            this.props.users.map(user => <span key={user._id}>{JSON.stringify(user)}</span>)
+        )
     }
+
 
     render() {
         return (
-            <div>UsersList</div>
+            <div>
+                {this.renderData()}
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        state: state.testReducer
-    };
+        const {users, error, isFetching} = state.developerReducer;
+        return {users, error, isFetching};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    testAction: () => dispatch(testAction())
+    getAllUsers: () => dispatch(getAllUsersAction())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

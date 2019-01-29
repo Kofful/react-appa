@@ -6,7 +6,7 @@ export const getAllUsersAction = () => {
     };
 };
 
-export const getUserByIdAction = () => {
+export const getUserByIdAction = (id) => {
     return {
         type: ACTION.FETCH_USER_BY_ID,
         id

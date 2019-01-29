@@ -1,7 +1,7 @@
 import ACTION from "../actions/actionType";
 
 const initialState = {
-    data: null,
+    users: [],
     isFetching: false,
     error: null
 };
@@ -31,15 +31,16 @@ export default function(state = initialState, action) {
             };
         }
         case ACTION.ONE_USER_RESPONSE: {
-            const oldState = {...state};
-            const index = oldState.users.findIndex((user) => undefined.id === action.user.id);
+            const users = {...state.users};
+            const index = users.findIndex((user) => undefined.id === action.user.id);
             if(index === -1) {
-                oldState.users.push(action.user);
+                users.push(action.user);
             } else {
-                oldState.users[index] = action.user;
+                users[index] = action.user;
             }
             return {
-                ...oldState,
+                ...state,
+                users,
                 error: null,
                 isFetching: false
             };
