@@ -45,6 +45,27 @@ export default function(state = initialState, action) {
                 isFetching: false
             };
         }
+
+        case ACTION.DELETE_USER_REQUEST: {
+            const users = {...state.users};
+            const index = users.findIndex((user) => undefined.id === action.user.id);
+            if(index === -1) {
+                users.splice(index, 1);
+            } 
+            return {
+                ...state,
+                users
+            };
+        }
+        
+        case ACTION.DELETE_USER_ERROR: {
+            const users = {...state.users};
+            users.push(action.user);
+            return {
+                ...state,
+                users
+            };
+        }
         default: {
             return state;
         }

@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
 
 import developerReducer from "./developerReducer";
+import currentUserReducer from "./currentUserReducer";
 
 
 const appReducer =  combineReducers({
-    developerReducer//, newReducer, new2Reducer
+    developerReducer, currentUserReducer//, newReducer, new2Reducer
 });
 
 

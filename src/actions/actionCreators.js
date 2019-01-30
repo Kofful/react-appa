@@ -12,3 +12,17 @@ export const getUserByIdAction = (id) => {
         id
     };
 }
+
+export const createAccountAction = (createAccountData) => {
+    return {
+        type: ACTION.CREATE_ACCOUNT,
+        createAccountData
+    };
+};
+
+export const deleteUserAction = (user) => {
+    return {
+        type: ACTION.CREATE_ACCOUNT,
+        user
+    };
+};

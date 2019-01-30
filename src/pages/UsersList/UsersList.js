@@ -1,4 +1,4 @@
-import {getAllUsersAction} from "../../actions/actionCreators";
+import {getAllUsersAction, deleteUserAction} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import React, {Component} from 'react';
 
@@ -13,7 +13,11 @@ class UsersList extends Component {
             return <span>Loading...</span>
         }
         return (
-            this.props.users.map(user => <span key={user._id}>{JSON.stringify(user)}</span>)
+            this.props.users.map(user => {
+                const deleteUser = () => {
+                    this.props.deleteUser(user);
+                };
+            return <span onClick={deleteUser} key={user._id}>{JSON.stringify(user)}</span>})
         )
     }
 
@@ -33,7 +37,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getAllUsers: () => dispatch(getAllUsersAction())
+    getAllUsers: () => dispatch(getAllUsersAction()),
+    deleteUser: (user) => dispatch(deleteUserAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

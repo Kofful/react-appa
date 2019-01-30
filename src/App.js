@@ -4,6 +4,7 @@ import { ApolloProvider } from "react-apollo";
 import { client } from "./api/graphql/apolloConfig";
 import UsersList from './pages/UsersList/UsersList';
 import UserProfile from './pages/UserProfile/UserProfile';
+import CreateAccount from './pages/CreateAccount/CreateAccount';
 
 class Main extends Component {
     render() {
@@ -19,14 +20,6 @@ class Login extends Component {
     render() {
         return (
             <div>Login</div>
-        );
-    }
-}
-
-class CreateAccount extends Component {
-    render() {
-        return (
-            <div>CreateAccount</div>
         );
     }
 }
