@@ -1,6 +1,9 @@
 import {getAllUsersAction, deleteUserAction} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import React, {Component} from 'react';
+import "./Users.sass"
+
+const moment = require("moment");
 
 class UsersList extends Component {
 
@@ -9,15 +12,26 @@ class UsersList extends Component {
     }
 
     renderData() {
-        if(this.props.isFetching) {
+        if (this.props.isFetching) {
             return <span>Loading...</span>
         }
         return (
-            this.props.users.map(user => {
-                const deleteUser = () => {
-                    this.props.deleteUser(user);
-                };
-            return <span onClick={deleteUser} key={user._id}>{JSON.stringify(user)}</span>})
+            this.props.users.map((item, index) =>
+                <div key={index}>
+                    <div className={"Users-Profile"}>
+                        <div className={"Users-ProfilePicture"}>
+                        </div>
+                        <div className={"Users-Info"}>
+                            <span className={"Users-FullName"}>{`${item.firstName} ${item.lastName}`}</span>
+                            <span className={"Users-Message"}>{item.lastMessage}</span>
+                            <div className={"Users-Filter"}></div>
+                        </div>
+                        <span className={"Users-Age"}>{`${moment().diff(item.birthDate, 'years')} years`}</span>
+                    </div>
+                    <div className={"Users-Splitter"}>
+                    </div>
+                </div>
+            )
         )
     }
 
@@ -32,8 +46,8 @@ class UsersList extends Component {
 }
 
 const mapStateToProps = (state) => {
-        const {users, error, isFetching} = state.developerReducer;
-        return {users, error, isFetching};
+    const {users, error, isFetching} = state.developerReducer;
+    return {users, error, isFetching};
 };
 
 const mapDispatchToProps = (dispatch) => ({

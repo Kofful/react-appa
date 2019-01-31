@@ -1,0 +1,68 @@
+
+.Users-Profile
+    text-decoration: none
+    display: flex
+    background-color: #FFFFFF
+    width: 375px
+    height: 70px
+    align-items: center
+    .Users-ProfilePicture
+        border-width: 1px
+        background-image: url("../../assets/img/environment.jpg")
+        margin: 0 16px
+        background-size: cover
+        min-height: 48px
+        min-width: 48px
+        border-radius: 100%
+    .Users-Info
+        position: relative
+        display: flex
+        flex-direction: column
+        width: 212px
+        height: 48px
+        overflow: hidden
+        .Users-Filter
+            position: absolute
+            height: 100%
+            width: 50px
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
+            right: 0
+        span
+            color: #0b3157
+            letter-spacing: -0.34px
+            line-height: 22px
+            font-family: "Montserrat", sans-serif
+            text-align: left
+            width: 212px
+            overflow: hidden
+        .Users-FullName
+            white-space: nowrap
+            font-size: 16px
+            font-weight: 600
+            height: 22px
+        .Users-Message
+            white-space: nowrap
+            top: 25px
+            position: absolute
+            font-size: 14px
+            font-weight: 400
+            opacity: 0.75
+    .Users-Age
+        float: right
+        align-self: flex-start
+        color: #0b3157
+        letter-spacing: -0.5px
+        line-height: 17px
+        font-family: "Montserrat", sans-serif
+        text-align: right
+        width: 65px
+        overflow: hidden
+        font-size: 14px
+        font-weight: 600
+        height: 22px
+        margin-top: 11px
+
+.Users-Splitter
+    height: 1px
+    width: 375px
+    background-color: #E6EAEE

@@ -11,7 +11,7 @@ export const getUserByIdAction = (id) => {
         type: ACTION.FETCH_USER_BY_ID,
         id
     };
-}
+};
 
 export const createAccountAction = (createAccountData) => {
     return {

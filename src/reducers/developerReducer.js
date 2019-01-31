@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
         }
         case ACTION.ONE_USER_RESPONSE: {
             const users = {...state.users};
-            const index = users.findIndex((user) => undefined.id === action.user.id);
+            const index = users.findIndex((user) => user.id === action.user.id);
             if(index === -1) {
                 users.push(action.user);
             } else {
@@ -48,7 +48,7 @@ export default function(state = initialState, action) {
 
         case ACTION.DELETE_USER_REQUEST: {
             const users = {...state.users};
-            const index = users.findIndex((user) => undefined.id === action.user.id);
+            const index = users.findIndex((user) => user.id === action.user.id);
             if(index === -1) {
                 users.splice(index, 1);
             } 
